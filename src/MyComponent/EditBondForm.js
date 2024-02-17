@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
-
+import infom from './Info.json'
 const EditBondForm = () => {
+  const[data,setData]=useState(''); 
     const [formData, setFormData] = useState({
         field1: '',
         field2: '',
@@ -66,7 +67,6 @@ const EditBondForm = () => {
         field62: '',
         field63: '',
         field64: '',
-        field65: '',
     });
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -79,8 +79,82 @@ const EditBondForm = () => {
         e.preventDefault()
         console.log(formData)
     }
+    const handleEditSubmit=(e)=>{
+      e.preventDefault()
+      alert(data);
+     setFormData({
+      field1: infom["SecurityDescription"],
+        field2: infom['SecurityName'],    
+        field3: infom['AssetType'],
+        field4: infom["InvestmentType"],
+        field5: infom['TradingFactor'],
+        field6: infom["PricingFactor"],
+        field7: infom[ "ISIN"],
+        field8: infom['BBGTicker'],
+        field9: infom["BBGUniqueID"],
+        field10: infom['CUSIP'],
+        field11: infom['SEDOL'],
+        field12: infom['FirstCouponDate'],
+        field13: infom['Cap'],
+        field14: infom['Floor'],
+        field15: infom['CouponFrequency'],
+        field16: infom['Coupon'],
+        field17: infom['CouponType'],
+        field18: infom['Spread'],
+        field19: infom['CallableFlag'],
+        field20: infom['FixToFloatFlag'],
+        field21: infom['PutableFlag'],
+        field22: infom['IssueDate'],
+        field23: infom['LastResetDate'],
+        field24: infom['Maturity'],
+        field25: infom['CallNotificationMaxDays'],
+        field26: infom['PutNotificationMaxDays'],
+        field27: infom['PenultimateCouponDate'],
+        field28: infom['ResetFrequency'],
+        field29: infom['HasPosition'],
+        field30: infom['MacaulayDuration'],
+        field31: infom['Volatility30D'],
+        field32: infom['Volatility90D'],
+        field34: infom['Convexity'],
+        field35: infom['AverageVolume30Day'],
+        field36: infom['PFAssetClass'],
+        field37: infom["PFCountry"],
+        field38: infom[ "PFCreditRating"],
+        field39: infom["PFCurrency"],
+        field40: infom["PFInstrument"],
+        field41: infom["PFLiquidityProfile"],
+        field42: infom["PFMaturity"],
+        field43: infom["PFNAICSCode"],
+        field44: infom["PFRegion"],
+        field45: infom["PFSector"],
+        field46: infom["PFSubAssetClass"],
+        field47: infom["BloombergIndustryGroup"],
+        field48: infom["BloombergIndustrySubGroup"],
+        field49: infom["BloombergIndustrySector"],
+        field50: infom[ "CountryOfIssuance"],
+        field51: infom["IssueCurrency"],
+        field52: infom["Issuer"],
+        field53: infom["RiskCurrency"],
+        field54: infom[ "PutDate"],
+        field55: infom["PutPrice"],
+        field56: infom["AskPrice"],
+        field57: infom["HighPrice"],
+        field58: infom[ "LowPrice"],
+        field59: infom["OpenPrice"],
+        field60: infom["Volume"],
+        field61: infom['BidPrice'],
+        field62: infom['LastPrice'],
+        field63: infom['CallDate'],
+        field64: infom['CallPrice'],
+     })
+      console.log(formData)
+  }
   return (
     <div>
+      <form className="d-flex" role="search" onSubmit={handleSubmit}>
+        <input className="form-control me-2" type="search" placeholder="Name of Bond" aria-label="Search" value={data} onChange={(e)=>setData(e.target.value)}/>
+        <button className="btn btn-outline-primary" type="submit" onClick={handleEditSubmit}>Edit</button>
+      </form><br/><br/>
                     <h1 className="centered-heading">Bond Security</h1>
                     <div className="form-container">
                       <form action="submit.js" method="post" onSubmit={handleSubmit} className="form-group">
@@ -204,17 +278,16 @@ const EditBondForm = () => {
                         <input type="number" id="number" name="field59" value={formData.field59} onChange={handleInputChange}/><br/><br/>
                         <label >Volume:</label>
                         <input type="number" id="number" name="field60" value={formData.field60} onChange={handleInputChange}/><br/><br/>
-                        <label>Ask Price:</label>
-                        <input type="number" id="number" name="field61" value={formData.field61} onChange={handleInputChange}/><br/><br/>
+                  
                         <label>Bid Price:</label>
-                        <input type="number" id="number" name="field62" value={formData.field62} onChange={handleInputChange}/><br/><br/>
+                        <input type="number" id="number" name="field61" value={formData.field61} onChange={handleInputChange}/><br/><br/>
                         <label>Last Price:</label>
-                        <input type="number" id="number" name="field63" value={formData.field63} onChange={handleInputChange}/><br/><br/>
+                        <input type="number" id="number" name="field62" value={formData.field62} onChange={handleInputChange}/><br/><br/>
             
                         <label>Call Date:</label>
-                        <input type="date" id="datetime" name="field64" value={formData.field64} onChange={handleInputChange}/><br/><br/>
+                        <input type="date" id="datetime" name="field63" value={formData.field63} onChange={handleInputChange}/><br/><br/>
                         <label>Call Price:</label>
-                        <input type="number" id="number" name="field65" value={formData.field65} onChange={handleInputChange}/><br/><br/>
+                        <input type="number" id="number" name="field64" value={formData.field64} onChange={handleInputChange}/><br/><br/>
                         <button className="form-btn">Submit</button><br/><br/>
                         <button className="form-btn">Close</button>
                       </form>
